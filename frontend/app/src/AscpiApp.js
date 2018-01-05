@@ -12,6 +12,11 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props)
+    if ('error' in this.props.questions) {
+      console.log(this.props.questions.error)
+    }
+
     return <div>
       <section className="hero is-success is-bold">
         <div className="hero-body">
@@ -26,7 +31,7 @@ class App extends Component {
         </div>
       </section>
       {
-        !this.props.questions.loading
+        (!this.props.questions.loading && 'allQuestions' in this.props.questions)
           ? <section className="section">
               <div className="container">
                 <h1 className="title is-1">{this.currentQuestion(this.props.questions.allQuestions).content}</h1>
