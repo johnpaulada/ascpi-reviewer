@@ -1,0 +1,10 @@
+name: app
+
+containers:
+- image: ascpi-app:latest
+
+services:
+- name: app
+  type: LoadBalancer
+  portMappings: 
+    - 3000:3000

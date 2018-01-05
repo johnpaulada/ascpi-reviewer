@@ -1,0 +1,10 @@
+name: api
+
+containers:
+- image: ascpi-api:latest
+
+services:
+- name: api
+  type: LoadBalancer
+  portMappings: 
+    - 4000:4000
