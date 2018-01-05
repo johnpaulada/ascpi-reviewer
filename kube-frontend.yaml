@@ -2,6 +2,7 @@ name: app
 
 containers:
 - image: ascpi-app:latest
+  imagePullPolicy: IfNotPresent
 
 services:
 - name: app

@@ -2,6 +2,7 @@ name: api
 
 containers:
 - image: ascpi-api:latest
+  imagePullPolicy: IfNotPresent
 
 services:
 - name: api
