@@ -6,7 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import AscpiApp from './AscpiApp';
 
 const client = new ApolloClient({
-  link: new HttpLink({uri: 'http://api:4000'}),
+  link: new HttpLink({uri: 'https://api.graph.cool/simple/v1/cjc2syhyo0vfg01306qasuooe'}),
   cache: new InMemoryCache()
 });
 

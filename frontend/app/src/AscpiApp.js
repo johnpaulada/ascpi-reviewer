@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
+import swal from 'sweetalert';
+require('./AscpiApp.css');
 
 class App extends Component {
   state = {
@@ -8,7 +10,18 @@ class App extends Component {
   }
 
   currentQuestion = allQuestions => {
-    return allQuestions[this.state.questionIndex]
+    return allQuestions[this.state.questionIndex % allQuestions.length]
+  }
+
+  selectAnswer = isCorrect => () => {
+    if (isCorrect) {
+      swal("Good job!", "You got the correct answer!", "success");
+      this.setState({
+        questionIndex: this.state.questionIndex + 1
+      })
+    } else {
+      swal("Oops!", "That's not quite right.", "error");
+    }
   }
 
   render() {
@@ -34,11 +47,11 @@ class App extends Component {
         (!this.props.questions.loading && 'allQuestions' in this.props.questions)
           ? <section className="section">
               <div className="container">
-                <h1 className="title is-1">{this.currentQuestion(this.props.questions.allQuestions).content}</h1>
+                <h1 className="title is-1">{this.currentQuestion(this.props.questions.allQuestions).question}</h1>
                 {
-                  this.currentQuestion(this.props.questions.allQuestions).choices.map(choice => {
-                    return <div className="box">
-                      <h2 className="subtitle">{choice.content}</h2>
+                  this.currentQuestion(this.props.questions.allQuestions).answers.map(choice => {
+                    return <div className="box" onClick={this.selectAnswer(choice.isCorrect)}>
+                      <h2 className="subtitle">{choice.answer}</h2>
                     </div>
                   })
                 }
@@ -53,9 +66,9 @@ class App extends Component {
 const AllQuestions = gql`
 {
   allQuestions {
-    content
-    choices {
-      content
+    question
+    answers {
+      answer
       isCorrect
     }
   }
