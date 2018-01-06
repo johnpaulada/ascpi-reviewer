@@ -1,0 +1,8 @@
+.box {
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.box:hover {
+    transform: translateX(20px);
+}
