@@ -25,10 +25,10 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
-    if ('error' in this.props.questions) {
-      console.log(this.props.questions.error)
-    }
+    // console.log(this.props)
+    // if ('error' in this.props.questions) {
+    //   console.log(this.props.questions.error)
+    // }
 
     return <div>
       <section className="hero is-success is-bold">
