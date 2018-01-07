@@ -13,8 +13,8 @@ class App extends Component {
     return allQuestions[this.state.questionIndex % allQuestions.length]
   }
 
-  selectAnswer = isCorrect => () => {
-    if (isCorrect) {
+  selectAnswer = v => () => {
+    if (v === '1') {
       swal("Good job!", "You got the correct answer!", "success");
       this.setState({
         questionIndex: this.state.questionIndex + 1
@@ -49,9 +49,9 @@ class App extends Component {
               <div className="container">
                 <h1 className="title is-1">{this.currentQuestion(this.props.questions.allQuestions).question}</h1>
                 {
-                  this.currentQuestion(this.props.questions.allQuestions).answers.map(choice => {
-                    return <div className="box" onClick={this.selectAnswer(choice.isCorrect)}>
-                      <h2 className="subtitle">{choice.answer}</h2>
+                  this.currentQuestion(this.props.questions.allQuestions).answers.map(answer => {
+                    return <div className="box" onClick={this.selectAnswer(answer.charAt(0))}>
+                      <h2 className="subtitle">{answer.substr(1)}</h2>
                     </div>
                   })
                 }
@@ -67,10 +67,7 @@ const AllQuestions = gql`
 {
   allQuestions {
     question
-    answers {
-      answer
-      isCorrect
-    }
+    answers
   }
 }
 `;
