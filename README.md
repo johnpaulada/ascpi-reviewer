@@ -11,7 +11,7 @@
 4. Start Minikube with `minikube start --vm-driver=xhyve`.
 5. Run `eval $(minikube docker-env)` on the console.
 6. Build the frontend image with `docker build -t ascpi-app frontend` on the console
-7. Build the backend image with `docker build -t ascpi-app backend` on the console.
+7. Build the backend image with `docker build -t ascpi-api backend` on the console.
 8. Create deployment and service configs with `kedge generate -f kube-backend.yaml -f kube-frontend.yaml > kube.yaml`. This will create a file called `kube.yaml`.
 9. Create the deployments and services with `kubectl apply -f kube.yaml`.
 10. Enable autoscaling with `kubectl apply -f autoscale.yaml`.
