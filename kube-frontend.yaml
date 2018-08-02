@@ -1,8 +1,9 @@
 name: app
 
-containers:
-- image: ascpi-app:latest
-  imagePullPolicy: IfNotPresent
+deployments:
+- containers:
+  - image: ascpi-app:latest
+    imagePullPolicy: IfNotPresent
 
 services:
 - name: app
