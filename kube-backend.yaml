@@ -4,6 +4,7 @@ deployments:
 - containers:
   - image: ascpi-api:latest
     imagePullPolicy: IfNotPresent
+  replicas: 2
 
 services:
 - name: api
